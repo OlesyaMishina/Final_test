@@ -15,3 +15,4 @@
 ![Alt text](Task4.jpg)
 
 5. Выложить историю команд в терминале ubuntu
+![Alt text](Task5.jpg)
