@@ -1,12 +1,9 @@
-package Task2.project;
+package Task2.project.model;
 
 import java.time.LocalDate;
 
-import javax.xml.crypto.Data;
-
 public abstract class Animal {
     private int id;
-    private Counter count;
     private String name;
     private LocalDate birthday; 
     private AnimalCommands command;
@@ -23,14 +20,6 @@ public abstract class Animal {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Counter getCount() {
-        return count;
-    }
-
-    public void setCount(Counter count) {
-        this.count = count;
     }
 
     public String getName() {
@@ -60,7 +49,7 @@ public abstract class Animal {
     public void setType(AnimalType type) {
         this.type = type;
     }
-    
+
     public AnimalType getType() {
         return type;
     }
