@@ -89,13 +89,13 @@ public class Console implements View {
     private void teachRecord() {
         System.out.println("Введите имя животного, которого вы хотите научить новой команде:");
         String name = scanner.nextLine();
-        System.out.println("Выберете команду, которой вы хотите научить животное:\n" 
-        +"1 - GO, 2 - JUMP, 3 - SIT, 4 - PLAY, 5 - SLEEP, 6 - VOICE "        );
+        System.out.println("Выберете команду, которой вы хотите научить животное:\n"
+                + "1 - GO, 2 - JUMP, 3 - SIT, 4 - PLAY, 5 - SLEEP, 6 - VOICE ");
         int command = Integer.parseInt(scanner.nextLine());
         presenter.teachRecord(name, command);
     }
 
-    //6 Сохранить список животных питомника в файл
+    // 6 Сохранить список животных питомника в файл
     private void saveRecordsInFile() {
         System.out.printf("File " + filename + " has been written.\n");
         presenter.saveRecords();
@@ -108,5 +108,3 @@ public class Console implements View {
         work = false;
     }
 }
-
-

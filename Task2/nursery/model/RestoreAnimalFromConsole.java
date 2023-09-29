@@ -1,12 +1,11 @@
 package model;
 
 import java.time.LocalDate;
-
 import model.baggageAnimal.BaggageAnimal;
 import model.domesticAnimal.DomesticAnimal;
 import view.CollecterInfo;
 
-//Собирает экземпляр животного используя информациюи от пользователя
+//Создает экземпляр животного используя информациюи от пользователя
 
 public class RestoreAnimalFromConsole {
 

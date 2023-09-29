@@ -2,7 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-    public class ToReadAnswer {
+public class ToReadAnswer {
 
     private Scanner scanner;
 
@@ -14,7 +14,7 @@ import java.util.Scanner;
         System.out.println("Введите номер операции: ");
         while (scanner.hasNextInt()) {
             int number = scanner.nextInt();
-        return number;
+            return number;
         }
         return 0;
     }

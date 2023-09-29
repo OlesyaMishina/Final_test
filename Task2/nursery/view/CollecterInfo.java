@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 import model.AnimalType;
 
+// Собирает информацию от пользователя и передает в RestoreAnimalFromConsole
 public class CollecterInfo {
     private Scanner scanner;
     private int id;
