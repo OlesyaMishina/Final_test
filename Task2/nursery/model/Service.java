@@ -1,15 +1,17 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.w3c.dom.css.Counter;
 
 import view.CollecterInfo;
 
 public class Service {
-    private AnimalType type;
+    private List<Commands> commands;;
     private Nursery listAnimals;
     private FileHandler fileHandler;
-    private Counter count;
-    private String filename = "listAnimals.dat"; // файл для хранения списка животных в питомнике
+    private String filename = "listAnimals.txt"; // файл для хранения списка животных в питомнике
 
     public Service(Nursery listAnimals) {
         this.listAnimals = listAnimals;
@@ -37,34 +39,69 @@ public class Service {
         listAnimals.addAnimal(animal);
     }
 
-    // public String getPrizeToysList() {
-    // System.out.println("Cписок призовых игрушек:");
-    // if (listPrizeToys.getPrizeToysList().isEmpty())
-    // return "пуст. Запустите розыгрыш призовой игрушки.";
-    // else
-    // return listPrizeToys.getPrizeToysList().toString();
-    // }
-
     public String saveAnimalList() {
-    fileHandler.saveToFile(listAnimals, filename);
-    return listAnimals.getAnimalList().toString();
+        fileHandler.saveToFile(listAnimals, filename);
+        return listAnimals.getAnimalList().toString();
     }
 
-    // Розыгрыш призовой игрушки. Работа со списком достуаных игрушей. Если
-    // количество меньше 1, удаляем ее, если боличнство
-    // больше 1, уменьшаем количество. Разыгранную игрушку добавляем в список
-    // призовых игрушек.
+    public String findAnimalByName(String name) {
+        List<Commands> commands;
+        commands = listAnimals.getAnimalByName(name).getCommands();
+        StringBuilder sb = new StringBuilder();
+        if (commands.size() == 0)
+            System.out.println("Список команд пуст.");
+        else {
+            sb.append("Список команд:" + name);
+            for (int i = 0; i < commands.size(); i++) {
+                sb = sb.append(" ").append(commands.get(i)).append(", ");
+            }
+        }
+        return sb.toString();
+    }
 
-    // Удаление призовой игрушки, уладенная игрушка Дозаписывается в файл
-    // "listGiveOutToys.dat"
-    // public void deletePrizeToy() {
-    // Toy giveOutToy = listPrizeToys.poll();
-    // if (giveOutToy == null)
-    // System.out.println("Список призовых игрушек пуст. Запустите розыгрыш призовых
-    // игрушек.");
-    // else {
-    // System.out.println("Выдана игрушка: " + giveOutToy);
-    // fileHandler.SaveToFileGiveOutToys(giveOutToy, fileGiveOut);
-    // }
-    // }
+    public String addCommand(String name, int command) {
+        commands = listAnimals.getAnimalByName(name).getCommands();
+        switch (command) {
+            case 1:
+                if (commands.contains(Commands.GO))
+                    System.out.println("Такая команда уже есть.");
+                else
+                    commands.add(Commands.GO);
+                break;
+            case 2:
+                if (commands.contains(Commands.JUMP))
+                    System.out.println("Такая команда уже есть.");
+                else
+                    commands.add(Commands.JUMP);
+                break;
+            case 3:
+                if (commands.contains(Commands.SIT))
+                    System.out.println("Такая команда уже есть.");
+                else
+                    commands.add(Commands.SIT);
+                break;
+            case 4:
+                if (commands.contains(Commands.PLAY))
+                    System.out.println("Такая команда уже есть.");
+                else
+                    commands.add(Commands.PLAY);
+                break;
+            case 5:
+                if (commands.contains(Commands.SLEEP))
+                    System.out.println("Такая команда уже есть.");
+                else
+                    commands.add(Commands.SLEEP);
+                break;
+            case 6:
+                if (commands.contains(Commands.VOICE))
+                    System.out.println("Такая команда уже есть.");
+                else
+                    commands.add(Commands.VOICE);
+                break;
+            default:
+                System.out.println("Введите число!");
+        }
+        return commands.toString();
+
+    }
 }

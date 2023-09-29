@@ -28,15 +28,15 @@ public class Presenter {
         service.addAnimal(collecterInfo);
     }
 
-    // public void getAllChooseRecords() {
-    //     String answer = service.getPrizeToysList();
-    //     view.print(answer);
-    // }
+    public void finfRecordByName(String name) {
+        String answer = service.findAnimalByName(name);
+        view.print(answer);
+    }
 
-    // public void chooseRecord() {
-    //     String answer = service.raffleToy();
-    //     view.print(answer);
-    // }
+    public void teachRecord(String name, int command) {
+        String answer = service.addCommand(name, command);
+        view.print(answer);
+    }
 
     public void saveRecords() {
         String answer = service.saveAnimalList();

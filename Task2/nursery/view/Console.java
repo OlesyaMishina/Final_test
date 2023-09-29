@@ -10,7 +10,7 @@ public class Console implements View {
 
     private Scanner scanner;
     private Presenter presenter;
-    public String filename = "listAnimals.dat";
+    public String filename = "listAnimals.txt";
     private boolean work = true;
 
     public Console() {
@@ -43,20 +43,16 @@ public class Console implements View {
                     addRecord();
                     break;
                 case 4:
-                //     FindAnimalByType();
-                //     break;
-                // case 5:
-                //     FindAnimalByName();
-                //     break;
-                // case 6:
-                //     SetNewCommand();
-                //     break;
-                case 7:
+                    findRecord();
+                    break;
+                case 5:
+                    teachRecord();
+                    break;
+                case 6:
                     saveRecordsInFile();
                     break;
-                case 8:
+                case 7:
                     exit();
-                    // break;
                 default:
                     System.out.println("Введите число!");
             }
@@ -66,7 +62,6 @@ public class Console implements View {
     // 1 - Загрузить список животных питомника из файла\n"
     private void loadListFromFile() {
         System.out.printf("\nFile " + filename + " has been loaded:\n");
-        System.out.print("id animal, type animal; name animal");
         presenter.loadRecordsFromFile();
     }
 
@@ -83,28 +78,30 @@ public class Console implements View {
         System.out.printf("Животное " + collecterInfo.getName() + " добавлено.");
     }
 
-    // // 4 - Найти всех животных отдного типа\n"
-    // private void raffleToy() {
-    //     presenter.chooseRecord();
-    // }
+    // 4 - Найти животное и распечатать список его команд\n
+    private void findRecord() {
+        System.out.println("Введите имя животного, команды которого вы хотите увидеть:");
+        String name = scanner.nextLine();
+        presenter.finfRecordByName(name);
+    }
 
-    // // 5 - Найти животное и распечатать список его команд\n
-    // private void getAllPrizeToys() {
-    //     presenter.getAllChooseRecords();
-    // }
+    // 5 - Научить животное новой команде\n
+    private void teachRecord() {
+        System.out.println("Введите имя животного, которого вы хотите научить новой команде:");
+        String name = scanner.nextLine();
+        System.out.println("Выберете команду, которой вы хотите научить животное:\n" 
+        +"1 - GO, 2 - JUMP, 3 - SIT, 4 - PLAY, 5 - SLEEP, 6 - VOICE "        );
+        int command = Integer.parseInt(scanner.nextLine());
+        presenter.teachRecord(name, command);
+    }
 
-    // // 6 - Научить животное новой команде\n
-    // private void giveOutToy() {
-    //     presenter.deleteRecord();
-    // }
-
-    // 7 - Сохрянить список доступных игрушек в файл\n
+    //6 Сохранить список животных питомника в файл
     private void saveRecordsInFile() {
         System.out.printf("File " + filename + " has been written.\n");
         presenter.saveRecords();
     }
 
-    // Сохранить список животных питомника в файл
+    // 7
     private void exit() {
         System.out.println("Работа программы завершена.");
         scanner.close();

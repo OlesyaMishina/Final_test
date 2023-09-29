@@ -1,10 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Animal {
+public abstract class Animal implements Serializable {
     private int id;
     private String animalFamily;
     private AnimalType type;
@@ -50,13 +51,19 @@ public abstract class Animal {
         this.birthday = birthday;
     }
 
-    // public AnimalCommands getCommands() {
-    // return commands;
-    // }
+    public List<Commands> getCommands() {
+        return commands;
+    }
 
-    // public void setCommand(List<Commands> commands) {
-    // this.commands = commands;
-    // }
+    public void setCommand(List<Commands> commands) {
+        this.commands = commands;
+    }
+
+    public void addCommand(Commands command) {
+        if (this.commands == null)
+            this.commands = new ArrayList<>();
+        this.commands.add(command);
+    }
 
     public void setType(AnimalType type) {
         this.type = type;
@@ -68,7 +75,8 @@ public abstract class Animal {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb = sb.append("\n").append(id).append(" ").append(animalFamily).append(", ").append(type.toString()).append(", имя: ").append(name)
+        sb = sb.append("\n").append(id).append(" ").append(animalFamily).append(", ").append(type.toString())
+                .append(", имя: ").append(name)
                 .append(", дата рождения: ").append(birthday);
         return sb.toString();
     }

@@ -18,6 +18,10 @@ public class Nursery implements Serializable {
         nursery.add(animal);
     }
 
+    public List<Animal> getAnimalList() {
+        return nursery;
+    }
+
     @Override
     public String toString() {
         return nursery.toString();
@@ -26,24 +30,11 @@ public class Nursery implements Serializable {
     public Animal getAnimalByName(String name) {
         Animal findAnimal = null;
         for (int i = 0; i < nursery.size(); i++) {
-            if (nursery.get(i).getName().equals(name)) {
+            if (nursery.get(i).getName().equals(name))
                 findAnimal = nursery.get(i);
-            }
         }
+        if (findAnimal == null)
+            System.out.println("Животное с именем " + name + " не найдено.");
         return findAnimal;
-    }
-
-    public List<String> findAnimalByType(AnimalType findType) {
-        List<String> find= new ArrayList<>();
-        for (int i = 0; i < nursery.size(); i++) {
-            if (nursery.get(i).getType()==findType) {
-                find.add(nursery.get(i).toString());
-            }
-        }
-        return find;
-    }
-
-    public List<Animal> getAnimalList() {
-        return nursery;
     }
 }

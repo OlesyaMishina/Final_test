@@ -10,9 +10,9 @@ import java.io.ObjectOutputStream;
  */
 public class FileHandler {
 
-    public void saveToFile(Nursery listAnimal, String filename) {
+    public void saveToFile(Nursery listAnimals, String filename) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
-            oos.writeObject(listAnimal);
+            oos.writeObject(listAnimals);
             oos.flush();
             oos.close();
         } catch (Exception ex) {
@@ -26,7 +26,7 @@ public class FileHandler {
                 ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
             listAnimals = ((Nursery) ois.readObject());
         } catch (Exception ex) {
-            System.out.println("Файл" + filename + "не существует.");
+            System.out.println("Файл " + filename + " не существует.");
         }
         return listAnimals;
     }
